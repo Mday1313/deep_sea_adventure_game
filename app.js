@@ -15,13 +15,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     }
-    let timeId = setInterval(startGame, 20);
+    let timerId = setInterval(startGame, 20);
 
+    function control(e) {
+        if(e.keyCode === 32) {
+            jump()
+        }
+    }
     function jump() {
-        turtleBottom += 50
+        if (turtleBottom < 530 ){
+            turtleBottom += 50
+        }
+        
         turtle.style.bottom = turtleBottom + 'px'
+        console.log(turtleBottom)
     }
 
-    document.addEventListener('keyup', jump)
+    function generateObstracle() {
+        let obstacleLeft = 500
+        let randomHeight = Math.random() * 60
+        let obstacleBottom = randomHeight
+        const obstacle = document.createElement('div')
+        obstacle.classList.add('obstacle')
+        gameDisplay.appendChild(obstacle)
+        obstacle.style.left = obstacleLeft + 'px'
+        obstacle.style.bottom = obstacleBottom + 'px'
+
+        function moveObstacle() {
+            obstacleLeft -= 2
+            obstacle.style.left = obstacleLeft + 'px'
+
+            if ( obstacleLeft === -60 ){
+                clearInterval(timerId)
+                gameDisplay.removeChild(obstacle)
+            }
+        }
+        let timerId = setInterval(moveObstacle, 20)
+        setTimeout(generateObstracle, 3000)
+    }
+    generateObstracle()
+
+    document.addEventListener('keyup', control)
  
 })

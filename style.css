@@ -4,7 +4,12 @@
     position: absolute;
 
 }
-
+/* .surface {
+    position: absolute;
+    top:100px;
+    width: 500px;
+    height: 100px;
+} */
 .shallow {
     background-color: rgb(14, 134, 204);
     width: 500px;
@@ -20,13 +25,13 @@
     top: 580px;
 }
 
-/* .turtle {
-    background-color: green;
-    width: 50px;
-    height: 30px;
+/* replace with jelly fish pixel art */
+.obstacle {
+    background-color: orange;
+    width: 60px;
+    height: 300px;
     position: absolute;
-} */
-
+}
 
 
 
